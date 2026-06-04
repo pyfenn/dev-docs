@@ -12,7 +12,13 @@ BUILDDIR      = _build
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: help Makefile
+FENN_PKG      ?= ../fenn/fenn
+
+.PHONY: help uml Makefile
+
+uml:
+	@mkdir -p _static/uml
+	@pyreverse -o png -p fenn --output-directory _static/uml $(FENN_PKG)
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).

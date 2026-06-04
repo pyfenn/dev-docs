@@ -4,3 +4,4 @@ sphinx_design
 myst_parser
 furo
 sphinxcontrib-mermaid
+pylint

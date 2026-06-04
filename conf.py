@@ -46,6 +46,7 @@ autosummary_generate = True
 autosummary_imported_members = False
 inheritance_graph_attrs = {"rankdir": "TB"}
 
+html_css_files = ["custom.css"]
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 

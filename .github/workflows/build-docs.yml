@@ -40,6 +40,9 @@ jobs:
           pip install -r requirements.txt
           pip install -e "fenn/[torch,vision]"
 
+      - name: Generate UML diagrams
+        run: make uml FENN_PKG=fenn/fenn
+
       - name: Build HTML docs
         run: make html
 
