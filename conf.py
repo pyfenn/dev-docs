@@ -53,7 +53,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 html_theme = "furo"
 html_title = "Fenn Documentation"
 html_logo = "_static/logo.png"
-html_favicon = "_static/favicon.ico"
+html_favicon = "_static/icon.svg"
 html_theme_options = {
     "source_repository": "https://github.com/pyfenn/fenn",
     "source_branch": "main",
