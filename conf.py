@@ -2,9 +2,11 @@ import os
 import sys
 
 
-_parent = os.path.abspath('..')
-if os.path.exists(os.path.join(_parent, 'fenn', '__init__.py')):
-    sys.path.insert(0, _parent)
+for _candidate in ['../fenn', 'fenn']:
+    _p = os.path.abspath(_candidate)
+    if os.path.exists(os.path.join(_p, 'fenn', '__init__.py')):
+        sys.path.insert(0, _p)
+        break
 
 # -- Project information -----------------------------------------------------
 project = "fenn"
@@ -15,11 +17,14 @@ master_doc = "index"
 # -- General configuration ---------------------------------------------------
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    "sphinx.ext.inheritance_diagram",
     "sphinx_copybutton",
     "sphinx_design",
-    "myst_parser",        # Allows Sphinx to read existing MkDocs .md files
+    "myst_parser",
+    "sphinxcontrib.mermaid",
 ]
 
 # MyST Parser settings — enable all common extensions
@@ -37,6 +42,9 @@ source_suffix = {
 
 autodoc_typehints = "description"
 autodoc_type_aliases = {}
+autosummary_generate = True
+autosummary_imported_members = False
+inheritance_graph_attrs = {"rankdir": "TB"}
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
