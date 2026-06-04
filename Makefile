@@ -5,7 +5,7 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     ?= ../fenn/fenn/
+SOURCEDIR     ?= .
 BUILDDIR      = _build
 
 # Put it first so that "make" without argument is like "make help".

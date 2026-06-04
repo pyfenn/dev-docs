@@ -41,7 +41,7 @@ jobs:
           pip install -e "fenn/[torch,vision]"
 
       - name: Build HTML docs
-        run: make html SOURCEDIR=fenn/fenn/
+        run: make html
 
       - name: Deploy to build branch
         uses: peaceiris/actions-gh-pages@v4
