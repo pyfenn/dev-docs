@@ -8,10 +8,6 @@ for _candidate in ['../fenn', 'fenn']:
         sys.path.insert(0, _p)
         break
 
-autodoc_mock_imports = [
-    "torch",
-]
-
 # -- Project information -----------------------------------------------------
 project = "fenn"
 copyright = "2026, pyfenn"

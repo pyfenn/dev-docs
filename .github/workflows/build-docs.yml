@@ -38,7 +38,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install sphinx
           pip install -r requirements.txt
-          pip install -e "fenn/[torch,vision]"
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
       - name: Generate UML diagrams
         run: make uml FENN_PKG=fenn/fenn
