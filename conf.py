@@ -56,9 +56,9 @@ html_title = "Fenn Documentation"
 html_logo = "_static/logo.png"
 html_favicon = "_static/icon.svg"
 html_theme_options = {
-    "source_repository": "https://github.com/pyfenn/fenn",
+    "source_repository": "https://github.com/pyfenn/dev-docs",
     "source_branch": "main",
-    "source_directory": "docs/",
+    "source_directory": "",
     "light_css_variables": {
         "color-brand-primary": "#00A86B",
         "color-brand-content": "#00A86B",
