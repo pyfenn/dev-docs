@@ -1,0 +1,8 @@
+<map id="inheritance76a4f84926" name="inheritance76a4f84926">
+<area shape="rect" id="node1" href="#fenn.logging.FennHandler" target="_top" title="FennHandler" alt="" coords="41,152,145,177"/>
+<area shape="rect" id="node2" href="#fenn.logging.XmlMixin" target="_top" title="XmlMixin" alt="" coords="103,79,187,104"/>
+<area shape="rect" id="node4" href="#fenn.logging.FennLogger" target="_top" title="FennLogger" alt="" coords="195,152,292,177"/>
+<area shape="rect" id="node3" title="Handler instances dispatch logging events to specific destinations." alt="" coords="5,79,79,104"/>
+<area shape="rect" id="node5" title="An adapter for loggers which makes it easier to specify contextual" alt="" coords="211,79,329,104"/>
+<area shape="rect" id="node6" title="A base class for loggers and handlers which allows them to share" alt="" coords="6,5,78,31"/>
+</map>
