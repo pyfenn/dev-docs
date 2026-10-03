@@ -1,0 +1,12 @@
+﻿fenn.datasets
+=============
+
+.. inheritance-diagram:: fenn.datasets
+   :top-classes: object
+   :parts: 1
+
+.. automodule:: fenn.datasets
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :special-members: __init__
