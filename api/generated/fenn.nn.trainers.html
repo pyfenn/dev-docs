@@ -1,0 +1,858 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="fenn.notification" href="fenn.notification.html"><link rel="prev" title="fenn.nn" href="fenn.nn.html">
+        <link rel="prefetch" href="../../_static/logo.png" as="image">
+
+    <link rel="shortcut icon" href="../../_static/icon.svg"><!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
+        <title>fenn.nn.trainers - Fenn Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #00A86B;
+  --color-brand-content: #00A86B;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #00C887;
+  --color-brand-content: #00C887;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #00C887;
+  --color-brand-content: #00C887;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Fenn Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Fenn Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../fenn.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fenn.agents.html">fenn.agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.agents.rag.html">fenn.agents.rag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.datasets.html">fenn.datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.logging.html">fenn.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.nn.html">fenn.nn</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">fenn.nn.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.notification.html">fenn.notification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.notification.services.html">fenn.notification.services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.remote.html">fenn.remote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.experimental.vision.html">fenn.experimental.vision</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pyfenn/dev-docs/blob/main/api/generated/fenn.nn.trainers.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pyfenn/dev-docs/edit/main/api/generated/fenn.nn.trainers.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="fenn-nn-trainers">
+<h1>fenn.nn.trainers<a class="headerlink" href="#fenn-nn-trainers" title="Link to this heading">¶</a></h1>
+<dl class="py class" id="module-fenn.nn.trainers">
+<dt class="sig sig-object py" id="fenn.nn.trainers.ClassificationTrainer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.nn.trainers.</span></span><span class="sig-name descname"><span class="pre">ClassificationTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/classification_trainer.html#ClassificationTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.ClassificationTrainer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fenn.nn.trainers.Trainer" title="fenn.nn.trainers.trainer.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a></p>
+<p>A trainer for classification tasks with PyTorch models.</p>
+<p>Supports binary, multi-class, and multi-label classification by adapting
+the loss computation and prediction logic based on the task type. Handles
+both single-label (<code class="docutils literal notranslate"><span class="pre">num_classes</span> <span class="pre">==</span> <span class="pre">2</span></code> → binary, <code class="docutils literal notranslate"><span class="pre">&gt;</span> <span class="pre">2</span></code> → multiclass) and
+multi-label (<code class="docutils literal notranslate"><span class="pre">multi_label=True</span></code>) scenarios.</p>
+<p>The automatic task type detection configures:
+- Binary: sigmoid activation, BCE loss, threshold at 0.5
+- Multiclass: softmax activation, cross-entropy loss
+- Multi-label: sigmoid activation, binary cross-entropy per label</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>) – The neural network model, expected to output logits for
+the classification task.</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em>) – Loss function compatible with the task type (e.g. BCEWithLogitsLoss
+for binary/multi-label, CrossEntropyLoss for multiclass).</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>) – Optimizer for updating trainable parameters.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – Number of classes (or labels in multi-label mode). Must be <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">1</span></code>.</p></li>
+<li><p><strong>multi_label</strong> (<em>bool</em>) – Whether this is a multi-label classification problem.
+Requires <code class="docutils literal notranslate"><span class="pre">num_classes</span> <span class="pre">&gt;=</span> <span class="pre">2</span></code>.</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – Device to run training on (<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'mps'</span></code>).</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>) – Stop training after this many epochs without
+improvement in validation/training loss. <code class="docutils literal notranslate"><span class="pre">None</span></code> disables.</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>) – Optional <a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code></a> for
+saving training state to disk.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For binary classification (<code class="docutils literal notranslate"><span class="pre">num_classes</span> <span class="pre">==</span> <span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">multi_label=False</span></code>),
+labels should be <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> shaped tensors. For multiclass, labels should
+be class indices. For multi-label, labels should be binary vectors of length
+<code class="docutils literal notranslate"><span class="pre">num_classes</span></code>.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.ClassificationTrainer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">multi_label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/classification_trainer.html#ClassificationTrainer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.ClassificationTrainer.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize a ClassificationTrainer instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>) – The neural network model to train.</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em>) – The loss function to use.</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>) – The optimizer to use.</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – The number of classes to predict.</p></li>
+<li><p><strong>multi_label</strong> (<em>bool</em>) – Whether to use multi-label classification.</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – The device on which the data will be loaded.</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>) – The number of epochs to wait before early stopping.</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>) – The checkpoint configuration. If <cite>None</cite>, checkpointing is disabled.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.ClassificationTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/classification_trainer.html#ClassificationTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.ClassificationTrainer.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Train the model with optional validation and early stopping.</p>
+<p>The behaviour depends on the combination of <cite>val_loader</cite> and
+<code class="docutils literal notranslate"><span class="pre">early_stopping_patience</span></code>:</p>
+<ul class="simple">
+<li><p>No validation loader, no early stopping: run full <code class="docutils literal notranslate"><span class="pre">epochs</span></code>.</p></li>
+<li><p>No validation loader, early stopping set: stop on training loss.</p></li>
+<li><p>Validation loader provided, no early stopping: evaluate every epoch
+but continue regardless of metrics.</p></li>
+<li><p>Validation loader provided and early stopping set: monitor
+validation loss and stop when it plateaus.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_loader</strong> (<em>DataLoader</em>) – DataLoader for training data.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – Total number of epochs to train for.</p></li>
+<li><p><strong>val_loader</strong> (<em>DataLoader</em><em> | </em><em>None</em>) – DataLoader for validation data (optional).</p></li>
+<li><p><strong>val_epochs</strong> (<em>int</em>) – How often to evaluate on validation set (in epochs).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The trained model (returned according to <code class="docutils literal notranslate"><span class="pre">return_model</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.ClassificationTrainer.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader_or_batch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_proba</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/classification_trainer.html#ClassificationTrainer.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.ClassificationTrainer.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Predicts the output of the model for a given dataloader or batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataloader_or_batch</strong> (<em>DataLoader</em><em> | </em><em>Tensor</em>) – A DataLoader or a torch tensor.</p></li>
+<li><p><strong>return_proba</strong> (<em>bool</em>) – If true, also returns the predicted probabilities alongside the predicted labels</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A list of predictions.
+list[list]:</p>
+<blockquote>
+<div><p>If <cite>return_proba=True</cite>, returns a tuple where:
+- first element is the list of predicted labels
+- second element is the list of predicted probabilities</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fenn.nn.trainers.LoRATrainer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.nn.trainers.</span></span><span class="sig-name descname"><span class="pre">LoRATrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SEQ_CLS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lora_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lora_dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_modules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/lora_trainer.html#LoRATrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.LoRATrainer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fenn.nn.trainers.Trainer" title="fenn.nn.trainers.trainer.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a></p>
+<p>LoRATrainer extends the base Trainer to support Parameter-Efficient Fine-Tuning (PEFT)
+using LoRA (Low-Rank Adaptation).</p>
+<p>Designed for HuggingFace transformer models. DataLoaders must yield dicts whose keys
+match the model’s forward signature (e.g. <code class="docutils literal notranslate"><span class="pre">input_ids</span></code>, <code class="docutils literal notranslate"><span class="pre">attention_mask</span></code>, <code class="docutils literal notranslate"><span class="pre">labels</span></code>).
+Loss is taken from <code class="docutils literal notranslate"><span class="pre">outputs.loss</span></code> when labels are present in the batch; <code class="docutils literal notranslate"><span class="pre">loss_fn</span></code>
+is used as a fallback if the model does not return a loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>)</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>)</p></li>
+<li><p><strong>task_type</strong> (<em>str</em>)</p></li>
+<li><p><strong>r</strong> (<em>int</em>)</p></li>
+<li><p><strong>lora_alpha</strong> (<em>int</em>)</p></li>
+<li><p><strong>lora_dropout</strong> (<em>float</em>)</p></li>
+<li><p><strong>target_modules</strong> (<em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>bias</strong> (<em>str</em>)</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>)</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.LoRATrainer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SEQ_CLS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lora_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lora_dropout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_modules</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'none'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/lora_trainer.html#LoRATrainer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.LoRATrainer.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the LoRATrainer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>) – The base HuggingFace model to fine-tune.</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>) – The optimizer.</p></li>
+<li><p><strong>task_type</strong> (<em>str</em>) – LoRA task type. One of <code class="docutils literal notranslate"><span class="pre">&quot;SEQ_CLS&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;CAUSAL_LM&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;SEQ_2_SEQ_LM&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;TOKEN_CLS&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;QUESTION_ANS&quot;</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;SEQ_CLS&quot;</span></code>.</p></li>
+<li><p><strong>r</strong> (<em>int</em>) – LoRA rank — number of low-rank dimensions. Defaults to <code class="docutils literal notranslate"><span class="pre">8</span></code>.</p></li>
+<li><p><strong>lora_alpha</strong> (<em>int</em>) – LoRA scaling factor. Defaults to <code class="docutils literal notranslate"><span class="pre">16</span></code>.</p></li>
+<li><p><strong>lora_dropout</strong> (<em>float</em>) – Dropout applied to LoRA layers. Defaults to <code class="docutils literal notranslate"><span class="pre">0.1</span></code>.</p></li>
+<li><p><strong>target_modules</strong> (<em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>) – Module names to apply LoRA to (e.g. <code class="docutils literal notranslate"><span class="pre">[&quot;q_proj&quot;,</span> <span class="pre">&quot;v_proj&quot;]</span></code>).
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, peft auto-detects based on the architecture.</p></li>
+<li><p><strong>bias</strong> (<em>str</em>) – Which biases to train. One of <code class="docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;lora_only&quot;</span></code>.
+Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;none&quot;</span></code>.</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em><em> | </em><em>None</em>) – Optional external loss function. Used when the model does not return
+a loss (i.e. labels are absent from the batch). Ignored otherwise.</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – Device to train on. Defaults to <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code>.</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>) – Epochs without improvement before early stopping.
+Disabled when <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>) – Checkpoint configuration. Disabled when <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.LoRATrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/lora_trainer.html#LoRATrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.LoRATrainer.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Train the model with optional validation and early stopping.</p>
+<p>DataLoaders must yield dicts with at minimum <code class="docutils literal notranslate"><span class="pre">input_ids</span></code> and
+<code class="docutils literal notranslate"><span class="pre">attention_mask</span></code>. Include <code class="docutils literal notranslate"><span class="pre">labels</span></code> to have the model (or
+<code class="docutils literal notranslate"><span class="pre">loss_fn</span></code>) compute the loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_loader</strong> (<em>DataLoader</em>) – DataLoader for training data.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – Total number of epochs to train for.</p></li>
+<li><p><strong>val_loader</strong> (<em>DataLoader</em><em> | </em><em>None</em>) – DataLoader for validation data (optional).</p></li>
+<li><p><strong>val_epochs</strong> (<em>int</em>) – How often to run validation (in epochs).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.LoRATrainer.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader_or_batch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/lora_trainer.html#LoRATrainer.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.LoRATrainer.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Generate predictions for a dataloader or a single batch.</p>
+<p>Labels are stripped from dict batches before inference so the model
+does not compute a loss during prediction.</p>
+<p>For classification tasks (<code class="docutils literal notranslate"><span class="pre">SEQ_CLS</span></code>, <code class="docutils literal notranslate"><span class="pre">TOKEN_CLS</span></code>, <code class="docutils literal notranslate"><span class="pre">QUESTION_ANS</span></code>),
+returns a flat list of predicted class indices.</p>
+<p>For generative tasks (<code class="docutils literal notranslate"><span class="pre">CAUSAL_LM</span></code>, <code class="docutils literal notranslate"><span class="pre">SEQ_2_SEQ_LM</span></code>), returns a list
+of logit tensors (one per batch).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataloader_or_batch</strong> (<em>DataLoader</em><em> | </em><em>dict</em><em> | </em><em>Tensor</em>) – A DataLoader, a dict batch, or a raw tensor.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Predicted class indices (classification) or logit tensors (generative).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fenn.nn.trainers.RegressionTrainer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.nn.trainers.</span></span><span class="sig-name descname"><span class="pre">RegressionTrainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/regression_trainer.html#RegressionTrainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.RegressionTrainer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fenn.nn.trainers.Trainer" title="fenn.nn.trainers.trainer.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a></p>
+<p>A trainer for regression tasks with PyTorch models.</p>
+<p>Extends the base <a class="reference internal" href="#fenn.nn.trainers.Trainer" title="fenn.nn.trainers.Trainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Trainer</span></code></a> with regression-specific metrics (R² score,
+MSE) and continuous-value prediction logic. Handles single-target regression
+with optional validation and early stopping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>) – The neural network model, expected to output continuous predictions.</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em>) – Loss function suitable for regression (e.g. MSELoss, HuberLoss).</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>) – Optimizer for updating trainable parameters.</p></li>
+<li><p><strong>return_model</strong> (<em>str</em>) – Which model version to return after training. <code class="docutils literal notranslate"><span class="pre">'last'</span></code>
+returns the final checkpoint, <code class="docutils literal notranslate"><span class="pre">'best'</span></code> returns the best model
+by validation/training loss.</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – Device to run training on (<code class="docutils literal notranslate"><span class="pre">'cpu'</span></code>, <code class="docutils literal notranslate"><span class="pre">'cuda'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'mps'</span></code>).</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>) – Stop training after this many epochs without
+improvement in loss. <code class="docutils literal notranslate"><span class="pre">None</span></code> disables.</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>) – Optional <code class="xref py py-class docutils literal notranslate"><span class="pre">Checkpoint</span></code> for
+saving training state to disk.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.RegressionTrainer.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'last'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/regression_trainer.html#RegressionTrainer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.RegressionTrainer.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize a RegressionTrainer instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>) – The neural network model to train.</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em>) – The loss function to use.</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>) – The optimizer to use.</p></li>
+<li><p><strong>return_model</strong> (<em>str</em>) – Whether to return the ‘last’ or ‘best’ model after training.</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – The device on which the data will be loaded.</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>) – The number of epochs to wait before early stopping.</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>) – The checkpoint configuration. If <cite>None</cite>, checkpointing is disabled.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.RegressionTrainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/regression_trainer.html#RegressionTrainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.RegressionTrainer.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Train the model with optional validation and early stopping.</p>
+<p>The behaviour depends on the combination of <cite>val_loader</cite> and
+<code class="docutils literal notranslate"><span class="pre">early_stopping_patience</span></code>:</p>
+<ul class="simple">
+<li><p>No validation loader, no early stopping: run full <code class="docutils literal notranslate"><span class="pre">epochs</span></code>.</p></li>
+<li><p>No validation loader, early stopping set: stop on training loss.</p></li>
+<li><p>Validation loader provided, no early stopping: evaluate every epoch
+but continue regardless of metrics.</p></li>
+<li><p>Validation loader provided and early stopping set: monitor
+validation loss and stop when it plateaus.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_loader</strong> (<em>DataLoader</em>) – DataLoader for training data.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – Total number of epochs to train for.</p></li>
+<li><p><strong>val_loader</strong> (<em>DataLoader</em><em> | </em><em>None</em>) – DataLoader for validation data (optional).</p></li>
+<li><p><strong>val_epochs</strong> (<em>int</em>) – How often to evaluate on validation set (in epochs).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The trained model (returned according to <code class="docutils literal notranslate"><span class="pre">return_model</span></code>).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.RegressionTrainer.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader_or_batch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/regression_trainer.html#RegressionTrainer.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.RegressionTrainer.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Predicts the output of the model for a given dataloader or batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataloader_or_batch</strong> (<em>DataLoader</em><em> | </em><em>Tensor</em>) – A DataLoader or a torch tensor.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of predictions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.nn.trainers.</span></span><span class="sig-name descname"><span class="pre">Trainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>The base Trainer abstract class for classification and regression tasks.</p>
+<p>Provides a common training loop with support for early stopping,
+checkpointing, and validation monitoring. Subclasses must implement
+<a class="reference internal" href="#fenn.nn.trainers.Trainer.fit" title="fenn.nn.trainers.Trainer.fit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fit()</span></code></a> to define the per-epoch training logic and <a class="reference internal" href="#fenn.nn.trainers.Trainer.predict" title="fenn.nn.trainers.Trainer.predict"><code class="xref py py-meth docutils literal notranslate"><span class="pre">predict()</span></code></a>
+to generate predictions from a model.</p>
+<dl class="simple">
+<dt>Subclasses:</dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="#fenn.nn.trainers.ClassificationTrainer" title="fenn.nn.trainers.ClassificationTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClassificationTrainer</span></code></a> for classification tasks.</p></li>
+<li><p><a class="reference internal" href="#fenn.nn.trainers.RegressionTrainer" title="fenn.nn.trainers.RegressionTrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegressionTrainer</span></code></a> for regression tasks.</p></li>
+<li><p><a class="reference internal" href="#fenn.nn.trainers.LoRATrainer" title="fenn.nn.trainers.LoRATrainer"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoRATrainer</span></code></a> for parameter-efficient fine-tuning.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>)</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em>)</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>)</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>)</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer.__init__">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'cpu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">early_stopping_patience</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">checkpoint_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize a Trainer instance to fit a neural network model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<em>Module</em>) – The neural network model to train.</p></li>
+<li><p><strong>loss_fn</strong> (<em>Module</em>) – The loss function to use.</p></li>
+<li><p><strong>optim</strong> (<em>Optimizer</em>) – The optimizer to use.</p></li>
+<li><p><strong>num_classes</strong> – The number of classes to predict.</p></li>
+<li><p><strong>device</strong> (<em>device</em><em> | </em><em>str</em>) – The device on which the data will be loaded.</p></li>
+<li><p><strong>early_stopping_patience</strong> (<em>int</em><em> | </em><em>None</em>) – The number of epochs to wait before early stopping.</p></li>
+<li><p><strong>checkpoint_config</strong> (<a class="reference internal" href="fenn.nn.html#fenn.nn.Checkpoint" title="fenn.nn.checkpoint.Checkpoint"><em>Checkpoint</em></a><em> | </em><em>None</em>) – The checkpoint configuration. If <cite>None</cite>, checkpointing is disabled.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer.fit">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_loader</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_loader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Train the model for a fixed number of epochs.</p>
+<p>Runs the full training loop including forward/backward passes,
+validation evaluation, checkpointing, and early stopping.
+The exact behavior depends on the validation and early stopping
+configuration:</p>
+<ul class="simple">
+<li><p>No validation loader, no early stopping: run full <code class="docutils literal notranslate"><span class="pre">epochs</span></code>.</p></li>
+<li><p>No validation loader, early stopping set: stop on training loss.</p></li>
+<li><p>Validation loader provided, no early stopping: evaluate every
+epoch but continue regardless of metrics.</p></li>
+<li><p>Validation loader and early stopping set: monitor validation
+loss and stop when it plateaus for <code class="docutils literal notranslate"><span class="pre">early_stopping_patience</span></code>
+epochs.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>train_loader</strong> (<em>DataLoader</em>) – PyTorch <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> yielding <code class="docutils literal notranslate"><span class="pre">(data,</span> <span class="pre">labels)</span></code>
+batches for training.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – Total number of training epochs. If resuming from a
+checkpoint, only the remaining epochs are run.</p></li>
+<li><p><strong>val_loader</strong> (<em>DataLoader</em><em> | </em><em>None</em>) – Optional <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> for validation evaluation.</p></li>
+<li><p><strong>val_epochs</strong> (<em>int</em>) – How frequently to evaluate on the validation set
+(e.g. <code class="docutils literal notranslate"><span class="pre">val_epochs=2</span></code> means every 2 epochs).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The trained model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer.load_best_checkpoint">
+<span class="sig-name descname"><span class="pre">load_best_checkpoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer.load_best_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer.load_best_checkpoint" title="Link to this definition">¶</a></dt>
+<dd><p>Load the best-performing checkpoint into the trainer’s model.</p>
+<p>Restores the model weights from the checkpoint with the lowest
+validation (or training) loss recorded during training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ValueError</strong> – If no checkpoint configuration was provided at init.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If no best checkpoint file exists.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer.load_checkpoint">
+<span class="sig-name descname"><span class="pre">load_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checkpoint_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer.load_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer.load_checkpoint" title="Link to this definition">¶</a></dt>
+<dd><p>Load a checkpoint from the given file path and restore training state.</p>
+<p>Restores the model weights, optimizer state, and epoch counter from
+a previously saved checkpoint file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>checkpoint_path</strong> (<em>str</em><em> | </em><em>Path</em>) – Path to the <code class="docutils literal notranslate"><span class="pre">.pt</span></code> checkpoint file.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If no checkpoint configuration was provided at init.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If the checkpoint file does not exist.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer.load_checkpoint_at_epoch">
+<span class="sig-name descname"><span class="pre">load_checkpoint_at_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer.load_checkpoint_at_epoch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer.load_checkpoint_at_epoch" title="Link to this definition">¶</a></dt>
+<dd><p>Load the checkpoint saved at a specific epoch.</p>
+<p>Searches the checkpoint directory for the saved state at the
+requested epoch and restores the model and optimizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>epoch</strong> (<em>int</em>) – The epoch whose checkpoint to load (1-indexed).</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If no checkpoint configuration was provided at init.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If no checkpoint exists for the given epoch.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer.predict">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataloader_or_batch</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer.predict" title="Link to this definition">¶</a></dt>
+<dd><p>Generate predictions from the trained model.</p>
+<p>Runs inference on the provided data without computing gradients,
+returning model predictions in the same format as the training
+labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataloader_or_batch</strong> (<em>DataLoader</em><em> | </em><em>Tensor</em>) – Either a PyTorch <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> yielding
+data batches, or a single tensor batch.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of predictions (one per sample).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.nn.trainers.Trainer.save_model">
+<span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'model.pth'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/nn/trainers/trainer.html#Trainer.save_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.nn.trainers.Trainer.save_model" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model_name</strong> (<em>str</em>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="fenn.notification.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">fenn.notification</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="fenn.nn.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">fenn.nn</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, pyfenn
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">fenn.nn.trainers</a><ul>
+<li><a class="reference internal" href="#fenn.nn.trainers.ClassificationTrainer"><code class="docutils literal notranslate"><span class="pre">ClassificationTrainer</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.nn.trainers.ClassificationTrainer.__init__"><code class="docutils literal notranslate"><span class="pre">ClassificationTrainer.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.ClassificationTrainer.fit"><code class="docutils literal notranslate"><span class="pre">ClassificationTrainer.fit()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.ClassificationTrainer.predict"><code class="docutils literal notranslate"><span class="pre">ClassificationTrainer.predict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fenn.nn.trainers.LoRATrainer"><code class="docutils literal notranslate"><span class="pre">LoRATrainer</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.nn.trainers.LoRATrainer.__init__"><code class="docutils literal notranslate"><span class="pre">LoRATrainer.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.LoRATrainer.fit"><code class="docutils literal notranslate"><span class="pre">LoRATrainer.fit()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.LoRATrainer.predict"><code class="docutils literal notranslate"><span class="pre">LoRATrainer.predict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fenn.nn.trainers.RegressionTrainer"><code class="docutils literal notranslate"><span class="pre">RegressionTrainer</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.nn.trainers.RegressionTrainer.__init__"><code class="docutils literal notranslate"><span class="pre">RegressionTrainer.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.RegressionTrainer.fit"><code class="docutils literal notranslate"><span class="pre">RegressionTrainer.fit()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.RegressionTrainer.predict"><code class="docutils literal notranslate"><span class="pre">RegressionTrainer.predict()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer"><code class="docutils literal notranslate"><span class="pre">Trainer</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer.__init__"><code class="docutils literal notranslate"><span class="pre">Trainer.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer.fit"><code class="docutils literal notranslate"><span class="pre">Trainer.fit()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer.load_best_checkpoint"><code class="docutils literal notranslate"><span class="pre">Trainer.load_best_checkpoint()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer.load_checkpoint"><code class="docutils literal notranslate"><span class="pre">Trainer.load_checkpoint()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer.load_checkpoint_at_epoch"><code class="docutils literal notranslate"><span class="pre">Trainer.load_checkpoint_at_epoch()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer.predict"><code class="docutils literal notranslate"><span class="pre">Trainer.predict()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.nn.trainers.Trainer.save_model"><code class="docutils literal notranslate"><span class="pre">Trainer.save_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>
