@@ -1,0 +1,12 @@
+﻿fenn.experimental.vision
+========================
+
+.. inheritance-diagram:: fenn.experimental.vision
+   :top-classes: object
+   :parts: 1
+
+.. automodule:: fenn.experimental.vision
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :special-members: __init__
