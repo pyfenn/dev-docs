@@ -1,0 +1,5 @@
+<map id="inheritance1b5bf41818" name="inheritance1b5bf41818">
+<area shape="rect" id="node1" href="#fenn.agents.BaseNode" target="_top" title="BaseNode" alt="" coords="45,5,133,31"/>
+<area shape="rect" id="node2" href="#fenn.agents.Flow" target="_top" title="A directed&#45;graph orchestrator for chaining Node executions." alt="" coords="5,79,77,104"/>
+<area shape="rect" id="node3" href="#fenn.agents.Node" target="_top" title="A retryable unit of work in a Flow." alt="" coords="101,79,173,104"/>
+</map>

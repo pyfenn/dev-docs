@@ -1,0 +1,816 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="fenn.agents.rag" href="fenn.agents.rag.html"><link rel="prev" title="API Reference" href="../fenn.html">
+        <link rel="prefetch" href="../../_static/logo.png" as="image">
+
+    <link rel="shortcut icon" href="../../_static/icon.svg"><!-- Generated with Sphinx 9.0.4 and Furo 2025.12.19 -->
+        <title>fenn.agents - Fenn Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  --color-brand-primary: #00A86B;
+  --color-brand-content: #00A86B;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #00C887;
+  --color-brand-content: #00C887;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: #00C887;
+  --color-brand-content: #00C887;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Fenn Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Fenn Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../fenn.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">fenn.agents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.agents.rag.html">fenn.agents.rag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.datasets.html">fenn.datasets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.logging.html">fenn.logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.nn.html">fenn.nn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.nn.trainers.html">fenn.nn.trainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.notification.html">fenn.notification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.notification.services.html">fenn.notification.services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.remote.html">fenn.remote</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fenn.experimental.vision.html">fenn.experimental.vision</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/pyfenn/dev-docs/blob/main/api/generated/fenn.agents.rst?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/pyfenn/dev-docs/edit/main/api/generated/fenn.agents.rst" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="fenn-agents">
+<h1>fenn.agents<a class="headerlink" href="#fenn-agents" title="Link to this heading">¶</a></h1>
+<div class="graphviz"><img src="../../_images/inheritance-4c45edf828e5c5efe4da861d6689c47c89c1f443.png" alt="Inheritance diagram of fenn.agents" usemap="#inheritance1b5bf41818" class="inheritance graphviz" /></div>
+<map id="inheritance1b5bf41818" name="inheritance1b5bf41818">
+<area shape="rect" id="node1" href="#fenn.agents.BaseNode" target="_top" title="BaseNode" alt="" coords="45,5,133,31"/>
+<area shape="rect" id="node2" href="#fenn.agents.Flow" target="_top" title="A directed&#45;graph orchestrator for chaining Node executions." alt="" coords="5,79,77,104"/>
+<area shape="rect" id="node3" href="#fenn.agents.Node" target="_top" title="A retryable unit of work in a Flow." alt="" coords="101,79,173,104"/>
+</map><dl class="py class" id="module-fenn.agents">
+<dt class="sig sig-object py" id="fenn.agents.BaseNode">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.agents.</span></span><span class="sig-name descname"><span class="pre">BaseNode</span></span><a class="reference internal" href="../../_modules/fenn/agents.html#BaseNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.BaseNode" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.BaseNode.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#BaseNode.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.BaseNode.__init__" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.BaseNode.exec">
+<span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prep_res</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#BaseNode.exec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.BaseNode.exec" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the node logic.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.BaseNode.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prep_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exec_res</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#BaseNode.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.BaseNode.post" title="Link to this definition">¶</a></dt>
+<dd><p>Post-process execution results.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.BaseNode.prep">
+<span class="sig-name descname"><span class="pre">prep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#BaseNode.prep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.BaseNode.prep" title="Link to this definition">¶</a></dt>
+<dd><p>Prepare data for execution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.BaseNode.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#BaseNode.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.BaseNode.run" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.BaseNode.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#BaseNode.set_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.BaseNode.set_params" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fenn.agents.Flow">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.agents.</span></span><span class="sig-name descname"><span class="pre">Flow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Flow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Flow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fenn.agents.BaseNode" title="fenn.agents.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseNode</span></code></a></p>
+<p>A directed-graph orchestrator for chaining Node executions.</p>
+<p>Flow manages the traversal of a directed graph of nodes. Each node
+returns an action string after execution, and Flow uses that action
+to look up the next node via the successor mappings created with
+connect(). The graph can branch, terminate explicitly, or warn on
+missing transitions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>start</strong> (<a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node"><em>Node</em></a><em> or </em><em>None</em>) – The first node to execute when the flow is run. Can be set
+later via start().</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.Flow.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Flow.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Flow.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the flow with an optional start node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>start</strong> (<a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node"><em>Node</em></a><em> or </em><em>None</em>) – The first node to execute, or None if start() will be
+called later.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.Flow.connect">
+<span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Flow.connect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Flow.connect" title="Link to this definition">¶</a></dt>
+<dd><p>Wire a transition from <em>src</em> to <em>dst</em> triggered by <em>action</em>.</p>
+<p>When <em>src</em> returns <em>action</em> from its lifecycle methods, the flow
+will move to <em>dst</em>. Passing <code class="docutils literal notranslate"><span class="pre">None</span></code> for <em>dst</em> marks the path
+as an explicit terminal transition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src</strong> (<a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node"><em>Node</em></a>) – The source node whose return value selects the destination.</p></li>
+<li><p><strong>dst</strong> (<a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node"><em>Node</em></a><em> or </em><em>None</em>) – The next node to execute, or None to terminate the flow.</p></li>
+<li><p><strong>action</strong> (<em>str</em>) – The action string returned by the source node that triggers
+this transition. Default: <code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>self, enabling method chaining.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#fenn.agents.Flow" title="fenn.agents.Flow">Flow</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.Flow.get_next_node">
+<span class="sig-name descname"><span class="pre">get_next_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">curr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Flow.get_next_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Flow.get_next_node" title="Link to this definition">¶</a></dt>
+<dd><p>Resolve the next node given the current node and action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>curr</strong> (<a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node"><em>Node</em></a>) – The currently executing node.</p></li>
+<li><p><strong>action</strong> (<em>str</em><em> or </em><em>None</em>) – The action returned by the current node’s lifecycle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The next node to execute, or None if the flow should
+terminate.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node">Node</a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.Flow.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prep_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exec_res</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Flow.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Flow.post" title="Link to this definition">¶</a></dt>
+<dd><p>Post-process execution results.</p>
+<p>Returns the result of the final node’s execution unchanged.
+Override this method when subclasses need to inspect or
+transform the flow-level result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shared</strong> (<em>dict</em>) – Mutable state shared across all nodes in the flow.</p></li>
+<li><p><strong>prep_res</strong> (<em>Any</em>) – The value returned by prep().</p></li>
+<li><p><strong>exec_res</strong> (<em>Any</em>) – The action string returned by the final node’s lifecycle.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The final action from the last executed node.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.Flow.start">
+<span class="sig-name descname"><span class="pre">start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Flow.start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Flow.start" title="Link to this definition">¶</a></dt>
+<dd><p>Set the start node for the flow.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>start</strong> (<a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node"><em>Node</em></a>) – The node that will be executed first.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The start node, enabling method chaining.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node">Node</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fenn.agents.LLMClient">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.agents.</span></span><span class="sig-name descname"><span class="pre">LLMClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key_env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/llm.html#LLMClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.LLMClient" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Unified LLM client supporting all major providers via an OpenAI-compatible API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>provider</strong> (<em>str</em><em>, </em><em>optional</em>) – Provider name (e.g. “openai”, “anthropic”, “openrouter”, “ollama”).
+Auto-detected from model name or base_url when omitted.</p></li>
+<li><p><strong>model</strong> (<em>str</em><em>, </em><em>optional</em>) – Model identifier. Defaults to the provider’s recommended default.</p></li>
+<li><p><strong>api_key</strong> (<em>str</em><em>, </em><em>optional</em>) – API key. Takes priority over api_key_env and environment lookup.</p></li>
+<li><p><strong>api_key_env</strong> (<em>str</em><em>, </em><em>optional</em>) – Environment variable name to read the API key from.
+Overrides the provider’s default env var (e.g. OPENROUTER_API_KEY).</p></li>
+<li><p><strong>base_url</strong> (<em>str</em><em>, </em><em>optional</em>) – Custom API base URL. Overrides the provider’s default endpoint.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.LLMClient.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key_env</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/llm.html#LLMClient.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.LLMClient.__init__" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>provider</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>model</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>api_key</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>api_key_env</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>base_url</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.LLMClient.ask">
+<span class="sig-name descname"><span class="pre">ask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/llm.html#LLMClient.ask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.LLMClient.ask" title="Link to this definition">¶</a></dt>
+<dd><p>Send a single prompt and return the response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prompt</strong> (<em>str</em>) – The user message to send.</p></li>
+<li><p><strong>schema</strong> (<em>pydantic.BaseModel</em><em>, </em><em>optional</em>) – If provided, validates the response against this schema.</p></li>
+<li><p><strong>retries</strong> (<em>int</em>) – Retry attempts on rate limit errors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or pydantic.BaseModel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.LLMClient.chat_complete">
+<span class="sig-name descname"><span class="pre">chat_complete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">schema</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/llm.html#LLMClient.chat_complete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.LLMClient.chat_complete" title="Link to this definition">¶</a></dt>
+<dd><p>Call the chat completions API with a list of message dicts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>messages</strong> (<em>list</em><em> of </em><em>dict</em>) – Messages in OpenAI format: [{“role”: “user”, “content”: “…”}].</p></li>
+<li><p><strong>schema</strong> (<em>pydantic.BaseModel</em><em>, </em><em>optional</em>) – If provided, instructs the model to return JSON matching this schema.</p></li>
+<li><p><strong>retries</strong> (<em>int</em>) – Number of retry attempts on rate limit errors.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str or pydantic.BaseModel</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.LLMClient.stream">
+<span class="sig-name descname"><span class="pre">stream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/llm.html#LLMClient.stream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.LLMClient.stream" title="Link to this definition">¶</a></dt>
+<dd><p>Send a prompt and yield response tokens one by one.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>prompt</strong> (<em>str</em>) – The user message to send.</p>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em> – Individual tokens from the LLM response.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>Iterator</em>[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fenn.agents.Node">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.agents.</span></span><span class="sig-name descname"><span class="pre">Node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Node" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fenn.agents.BaseNode" title="fenn.agents.BaseNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseNode</span></code></a></p>
+<p>A retryable unit of work in a Flow.</p>
+<p>Wraps the prep/exec/post lifecycle from BaseNode with automatic
+retry support around the exec step. If all retry attempts are
+exhausted, execution falls back to exec_fallback instead of
+propagating the exception.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_retries</strong> (<em>int</em>) – Maximum number of attempts to run exec before giving up and
+calling exec_fallback. Default: 1 (no retries).</p></li>
+<li><p><strong>wait</strong> (<em>int</em><em> or </em><em>float</em>) – Seconds to sleep between failed attempts. Default: 0.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.Node.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_retries</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Node.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Node.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the node’s retry configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_retries</strong> (<em>int</em>) – Maximum number of attempts to run exec before giving up.
+Default: 1.</p></li>
+<li><p><strong>wait</strong> (<em>int</em><em> or </em><em>float</em>) – Seconds to sleep between failed attempts. Default: 0.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.Node.exec_fallback">
+<span class="sig-name descname"><span class="pre">exec_fallback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prep_res</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents.html#Node.exec_fallback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.Node.exec_fallback" title="Link to this definition">¶</a></dt>
+<dd><p>Handle the final exec failure after all retries are exhausted.</p>
+<p>Default behavior is to re-raise the exception. Override this
+to return a fallback result instead of failing.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prep_res</strong> (<em>Any</em>) – The result returned by prep, passed through to exec.</p></li>
+<li><p><strong>exc</strong> (<em>Exception</em>) – The exception raised by the final failed exec attempt.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Fallback result to use in place of a successful exec call.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Re-raises <cite>exc</cite> by default.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="fenn.agents.RAGNode">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">fenn.agents.</span></span><span class="sig-name descname"><span class="pre">RAGNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'query'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rag_context'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rag_chunks'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">faiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'local'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'smart'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persist_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/rag/rag_node.html#RAGNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.RAGNode" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#fenn.agents.Node" title="fenn.agents.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+<p>Flow node that retrieves relevant context from indexed sources.</p>
+<p>Loads and indexes all sources once at construction time, then per run
+queries the index using <code class="docutils literal notranslate"><span class="pre">shared[query_key]</span></code> and writes the results
+into <code class="docutils literal notranslate"><span class="pre">shared[chunks_key]</span></code> and <code class="docutils literal notranslate"><span class="pre">shared[context_key]</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sources</strong> (<em>str</em><em> or </em><em>list</em><em> of </em><em>str</em><em>, </em><em>optional</em>) – File paths, folder paths, or URLs to load and index on init.
+Additional sources can be indexed later with <a class="reference internal" href="#fenn.agents.RAGNode.add_source" title="fenn.agents.RAGNode.add_source"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_source()</span></code></a>.</p></li>
+<li><p><strong>query_key</strong> (<em>str</em>) – Key in <code class="docutils literal notranslate"><span class="pre">shared</span></code> that holds the user query. Default: <code class="docutils literal notranslate"><span class="pre">&quot;query&quot;</span></code>.</p></li>
+<li><p><strong>context_key</strong> (<em>str</em>) – Key written into <code class="docutils literal notranslate"><span class="pre">shared</span></code> with the concatenated chunk text.
+Default: <code class="docutils literal notranslate"><span class="pre">&quot;rag_context&quot;</span></code>.</p></li>
+<li><p><strong>chunks_key</strong> (<em>str</em>) – Key written into <code class="docutils literal notranslate"><span class="pre">shared</span></code> with the raw list of chunks.
+Default: <code class="docutils literal notranslate"><span class="pre">&quot;rag_chunks&quot;</span></code>.</p></li>
+<li><p><strong>top_k</strong> (<em>int</em>) – Maximum number of chunks to retrieve. Default: 5.</p></li>
+<li><p><strong>next_action</strong> (<em>str</em>) – Action string returned by <code class="docutils literal notranslate"><span class="pre">post()</span></code>, used by <code class="docutils literal notranslate"><span class="pre">Flow.get_next_node()</span></code>.
+Default: <code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code>.</p></li>
+<li><p><strong>faiss</strong> (<em>bool</em>) – Use FAISS semantic search instead of BM25. Default: False.</p></li>
+<li><p><strong>embedding_provider</strong> (<em>str</em>) – Embedding provider (only used when faiss=True). Default: <code class="docutils literal notranslate"><span class="pre">&quot;local&quot;</span></code>.</p></li>
+<li><p><strong>embedding_model</strong> (<em>str</em>) – Embedding model (only used when faiss=True). Default: <code class="docutils literal notranslate"><span class="pre">&quot;all-MiniLM-L6-v2&quot;</span></code>.</p></li>
+<li><p><strong>embedding_api_key</strong> (<em>str</em><em>, </em><em>optional</em>) – API key for the embedding provider.</p></li>
+<li><p><strong>chunk_mode</strong> (<em>str</em>) – Document chunking strategy. One of <code class="docutils literal notranslate"><span class="pre">&quot;smart&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;paragraphs&quot;</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&quot;sentences&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;fixed&quot;</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">&quot;smart&quot;</span></code>.</p></li>
+<li><p><strong>persist_path</strong> (<em>str</em><em> or </em><em>Path</em><em>, </em><em>optional</em>) – Directory to save/load the FAISS index. Only used when faiss=True.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.RAGNode.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sources</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'query'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rag_context'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'rag_chunks'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">next_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">faiss</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_provider</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'local'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all-MiniLM-L6-v2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embedding_api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunk_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'smart'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persist_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/rag/rag_node.html#RAGNode.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.RAGNode.__init__" title="Link to this definition">¶</a></dt>
+<dd><p>Initialize the node’s retry configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>max_retries</strong> (<em>int</em>) – Maximum number of attempts to run exec before giving up.
+Default: 1.</p></li>
+<li><p><strong>wait</strong> (<em>int</em><em> or </em><em>float</em>) – Seconds to sleep between failed attempts. Default: 0.</p></li>
+<li><p><strong>sources</strong> (<em>str</em><em> | </em><em>list</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>query_key</strong> (<em>str</em>)</p></li>
+<li><p><strong>context_key</strong> (<em>str</em>)</p></li>
+<li><p><strong>chunks_key</strong> (<em>str</em>)</p></li>
+<li><p><strong>top_k</strong> (<em>int</em>)</p></li>
+<li><p><strong>next_action</strong> (<em>str</em>)</p></li>
+<li><p><strong>faiss</strong> (<em>bool</em>)</p></li>
+<li><p><strong>embedding_provider</strong> (<em>str</em>)</p></li>
+<li><p><strong>embedding_model</strong> (<em>str</em>)</p></li>
+<li><p><strong>embedding_api_key</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+<li><p><strong>chunk_mode</strong> (<em>str</em>)</p></li>
+<li><p><strong>persist_path</strong> (<em>str</em><em> | </em><em>None</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.RAGNode.add_source">
+<span class="sig-name descname"><span class="pre">add_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/rag/rag_node.html#RAGNode.add_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.RAGNode.add_source" title="Link to this definition">¶</a></dt>
+<dd><p>Index an additional source. Returns self for chaining.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>source</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="fenn.agents.rag.html#fenn.agents.rag.RAGNode" title="fenn.agents.rag.rag_node.RAGNode"><em>RAGNode</em></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.RAGNode.exec">
+<span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/rag/rag_node.html#RAGNode.exec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.RAGNode.exec" title="Link to this definition">¶</a></dt>
+<dd><p>Execute the node logic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>query</strong> (<em>str</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.RAGNode.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chunks</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/rag/rag_node.html#RAGNode.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.RAGNode.post" title="Link to this definition">¶</a></dt>
+<dd><p>Post-process execution results.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shared</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>)</p></li>
+<li><p><strong>query</strong> (<em>str</em>)</p></li>
+<li><p><strong>chunks</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="fenn.agents.RAGNode.prep">
+<span class="sig-name descname"><span class="pre">prep</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shared</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/fenn/agents/rag/rag_node.html#RAGNode.prep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fenn.agents.RAGNode.prep" title="Link to this definition">¶</a></dt>
+<dd><p>Prepare data for execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>shared</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>)</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="fenn.agents.rag.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">fenn.agents.rag</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../fenn.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">API Reference</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, pyfenn
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">fenn.agents</a><ul>
+<li><a class="reference internal" href="#fenn.agents.BaseNode"><code class="docutils literal notranslate"><span class="pre">BaseNode</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.agents.BaseNode.__init__"><code class="docutils literal notranslate"><span class="pre">BaseNode.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.BaseNode.exec"><code class="docutils literal notranslate"><span class="pre">BaseNode.exec()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.BaseNode.post"><code class="docutils literal notranslate"><span class="pre">BaseNode.post()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.BaseNode.prep"><code class="docutils literal notranslate"><span class="pre">BaseNode.prep()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.BaseNode.run"><code class="docutils literal notranslate"><span class="pre">BaseNode.run()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.BaseNode.set_params"><code class="docutils literal notranslate"><span class="pre">BaseNode.set_params()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fenn.agents.Flow"><code class="docutils literal notranslate"><span class="pre">Flow</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.agents.Flow.__init__"><code class="docutils literal notranslate"><span class="pre">Flow.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.Flow.connect"><code class="docutils literal notranslate"><span class="pre">Flow.connect()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.Flow.get_next_node"><code class="docutils literal notranslate"><span class="pre">Flow.get_next_node()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.Flow.post"><code class="docutils literal notranslate"><span class="pre">Flow.post()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.Flow.start"><code class="docutils literal notranslate"><span class="pre">Flow.start()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fenn.agents.LLMClient"><code class="docutils literal notranslate"><span class="pre">LLMClient</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.agents.LLMClient.__init__"><code class="docutils literal notranslate"><span class="pre">LLMClient.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.LLMClient.ask"><code class="docutils literal notranslate"><span class="pre">LLMClient.ask()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.LLMClient.chat_complete"><code class="docutils literal notranslate"><span class="pre">LLMClient.chat_complete()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.LLMClient.stream"><code class="docutils literal notranslate"><span class="pre">LLMClient.stream()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fenn.agents.Node"><code class="docutils literal notranslate"><span class="pre">Node</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.agents.Node.__init__"><code class="docutils literal notranslate"><span class="pre">Node.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.Node.exec_fallback"><code class="docutils literal notranslate"><span class="pre">Node.exec_fallback()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fenn.agents.RAGNode"><code class="docutils literal notranslate"><span class="pre">RAGNode</span></code></a><ul>
+<li><a class="reference internal" href="#fenn.agents.RAGNode.__init__"><code class="docutils literal notranslate"><span class="pre">RAGNode.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.RAGNode.add_source"><code class="docutils literal notranslate"><span class="pre">RAGNode.add_source()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.RAGNode.exec"><code class="docutils literal notranslate"><span class="pre">RAGNode.exec()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.RAGNode.post"><code class="docutils literal notranslate"><span class="pre">RAGNode.post()</span></code></a></li>
+<li><a class="reference internal" href="#fenn.agents.RAGNode.prep"><code class="docutils literal notranslate"><span class="pre">RAGNode.prep()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>
