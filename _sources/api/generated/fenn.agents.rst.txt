@@ -1,0 +1,12 @@
+﻿fenn.agents
+===========
+
+.. inheritance-diagram:: fenn.agents
+   :top-classes: object
+   :parts: 1
+
+.. automodule:: fenn.agents
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :special-members: __init__
