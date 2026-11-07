@@ -1,0 +1,12 @@
+﻿fenn.remote
+===========
+
+.. inheritance-diagram:: fenn.remote
+   :top-classes: object
+   :parts: 1
+
+.. automodule:: fenn.remote
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :special-members: __init__
