@@ -1,0 +1,12 @@
+﻿fenn.notification
+=================
+
+.. inheritance-diagram:: fenn.notification
+   :top-classes: object
+   :parts: 1
+
+.. automodule:: fenn.notification
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :special-members: __init__

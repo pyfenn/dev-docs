@@ -1,0 +1,12 @@
+﻿fenn.nn
+=======
+
+.. inheritance-diagram:: fenn.nn
+   :top-classes: object
+   :parts: 1
+
+.. automodule:: fenn.nn
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :special-members: __init__

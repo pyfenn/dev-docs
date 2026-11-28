@@ -1,0 +1,12 @@
+﻿fenn.logging
+============
+
+.. inheritance-diagram:: fenn.logging
+   :top-classes: object
+   :parts: 1
+
+.. automodule:: fenn.logging
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :special-members: __init__
